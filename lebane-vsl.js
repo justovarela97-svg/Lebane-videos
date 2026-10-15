@@ -1,3 +1,5 @@
+var __s=document.currentScript,__B=(__s&&/lebane-vsl\.js/.test(__s.src))?__s.src.replace(/lebane-vsl\.js.*$/,''):'https://cdn.jsdelivr.net/gh/justovarela97-svg/Lebane-videos@main/';
+if(!window.__lbvsl){window.__lbvsl=1;
 (function(){var t=document.getElementById(`logoTrack`),m=document.getElementById(`logoTrackMob`);if(!t)return;var orig=Array.prototype.slice.call(t.children);if(m)orig.forEach(function(c){m.appendChild(c.cloneNode(!0))});[t,m].forEach(function(tr){if(!tr)return;Array.prototype.slice.call(tr.children).forEach(function(c){var d=c.cloneNode(!0);d.setAttribute(`aria-hidden`,`true`);var i=d.querySelector(`img`);i&&i.setAttribute(`alt`,``);tr.appendChild(d)})})})();
 (function(){var host=document.querySelector(`.hs-form-html`),wrap=document.getElementById(`formProgress`),stepEl=document.getElementById(`fpStep`),dotsEl=document.getElementById(`fpDots`);if(!host||!wrap||!stepEl||!dotsEl)return;function buildDots(total,current){dotsEl.innerHTML=``;for(var i=1;i<=total;i++){var d=document.createElement(`div`);d.className=`fp-dot-seg`+(i<=current?` active`:``),dotsEl.appendChild(d)}}function update(){var pb=host.querySelector(`[role="progressbar"]`);if(!pb){wrap.hidden=!0;return}var now=parseInt(pb.getAttribute(`aria-valuenow`),10)||1,max=parseInt(pb.getAttribute(`aria-valuemax`),10)||2;stepEl.textContent=`Paso `+now+` de `+max,buildDots(max,now),wrap.hidden=!1}new MutationObserver(update).observe(host,{childList:!0,subtree:!0,attributes:!0,attributeFilter:[`aria-valuenow`,`aria-valuemax`]}),update(),setTimeout(update,600),setTimeout(update,1500),setTimeout(update,3e3)})();
 /* VSL: reproducción, barra de progreso, CTA al final y eventos de seguimiento */
@@ -116,7 +118,7 @@ window.addEventListener('message', function (e) {
 if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') lead();
 });
 })();
-(function(){var mob=matchMedia('(max-width: 880px)').matches,red=matchMedia('(prefers-reduced-motion: reduce)').matches,B='https://cdn.jsdelivr.net/gh/justovarela97-svg/Lebane-videos@main/lebane-bg-scroll-'+(mob?'9x16':'16x9');
+(function(){var mob=matchMedia('(max-width: 880px)').matches,red=matchMedia('(prefers-reduced-motion: reduce)').matches,B=__B+'lebane-bg-scroll-'+(mob?'9x16':'16x9');
 var d=document.createElement('div');d.className='bgv';d.setAttribute('aria-hidden','true');var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='auto';v.poster=B+(red?'-fin.jpg':'-ini.jpg');d.appendChild(v);document.body.insertBefore(d,document.body.firstChild);document.documentElement.classList.add('dk');
 if(red)return;v.src=B+'.mp4';
 var goal=mob?document.getElementById('card'):(document.querySelector('.form-zone')||document.getElementById('card')),tk,last=-1,primed=false;
@@ -125,3 +127,5 @@ function prime(){if(primed)return;primed=true;var p=v.play();if(p&&p.then)p.then
 v.addEventListener('loadedmetadata',upd);
 addEventListener('scroll',function(){prime();if(!tk)tk=requestAnimationFrame(function(){tk=0;upd()})},{passive:true});
 addEventListener('touchstart',prime,{passive:true,once:true});addEventListener('resize',upd)})();
+
+}
