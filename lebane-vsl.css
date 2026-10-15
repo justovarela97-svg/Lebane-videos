@@ -72,3 +72,14 @@ html.dk .hd-eyebrow b{color:#fff;font-weight:800}
 html.dk .hd-sub b{color:#fff;font-weight:700}
 html.dk .hd-sub{max-width:620px;margin-left:auto;margin-right:auto}
 html.dk .hd-sub{text-wrap:balance}
+/* opcion 1: fondo limpio (?bg=clean) */
+.bgv-clean{background:radial-gradient(70% 55% at 78% 8%,#296bfe2e 0%,#296bfe00 70%),radial-gradient(55% 45% at 8% 95%,#296bfe1a 0%,#296bfe00 70%),#161922}
+.bgv-clean:after{display:none}
+.bgv-floor{position:absolute;left:-25%;right:-25%;bottom:-8vh;height:60vh;background-image:linear-gradient(#78a0ff1f 1px,transparent 1px),linear-gradient(90deg,#78a0ff1f 1px,transparent 1px);background-size:64px 64px;transform:perspective(700px) rotateX(62deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 55%);mask-image:linear-gradient(180deg,transparent 0%,#000 55%);opacity:.9}
+/* form paso 2 */
+#card .hs-form-html .hsfc-Row{margin-bottom:16px!important}
+#card .hs-form-html .hsfc-CheckboxFieldGroup__Options{display:grid!important;grid-template-columns:1fr 1fr;gap:8px 12px;margin-top:4px}
+#card .hs-form-html .hsfc-CheckboxFieldGroup__Options label{display:flex!important;align-items:center;gap:9px;text-transform:none;letter-spacing:0;font-size:14px;font-weight:600;color:var(--ink);margin:0;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#f7f9fc;cursor:pointer;line-height:1.2}
+#card .hs-form-html .hsfc-CheckboxFieldGroup__Options label:has(input:checked){border-color:var(--blue);background:var(--blue-soft)}
+#card .hs-form-html .hsfc-CheckboxInput{width:17px!important;height:17px!important;margin:0!important;flex:none;accent-color:var(--blue)}
+@media (width<=380px){#card .hs-form-html .hsfc-CheckboxFieldGroup__Options{grid-template-columns:1fr}}
