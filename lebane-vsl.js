@@ -116,4 +116,12 @@ window.addEventListener('message', function (e) {
 if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') lead();
 });
 })();
-(function(){var hv=document.querySelector('.hd-vid');if(!hv)return;var mob=matchMedia('(max-width: 880px)').matches,red=matchMedia('(prefers-reduced-motion: reduce)').matches,B='https://cdn.jsdelivr.net/gh/justovarela97-svg/Lebane-videos@main/lebane-hero-edificio-'+(mob?'9x16':'16x9');hv.poster=B+(red?'-fin.jpg':'-ini.jpg');if(!red){hv.src=B+'.mp4';var p=hv.play();p&&p.catch&&p.catch(function(){})}})();
+(function(){var mob=matchMedia('(max-width: 880px)').matches,red=matchMedia('(prefers-reduced-motion: reduce)').matches,B='https://cdn.jsdelivr.net/gh/justovarela97-svg/Lebane-videos@main/lebane-bg-scroll-'+(mob?'9x16':'16x9');
+var d=document.createElement('div');d.className='bgv';d.setAttribute('aria-hidden','true');var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='auto';v.poster=B+(red?'-fin.jpg':'-ini.jpg');d.appendChild(v);document.body.insertBefore(d,document.body.firstChild);document.documentElement.classList.add('dk');
+if(red)return;v.src=B+'.mp4';
+var goal=mob?document.getElementById('card'):(document.querySelector('.form-zone')||document.getElementById('card')),tk,last=-1,primed=false;
+function upd(){if(!v.duration)return;var end=(goal?goal.getBoundingClientRect().top+scrollY:document.body.scrollHeight)-innerHeight*.5;var p=Math.min(1,Math.max(0,scrollY/Math.max(1,end)));var t=p*(v.duration-.05);if(Math.abs(t-last)>.03){last=t;try{v.currentTime=t}catch(e){}}}
+function prime(){if(primed)return;primed=true;var p=v.play();if(p&&p.then)p.then(function(){v.pause();upd()}).catch(function(){});else v.pause()}
+v.addEventListener('loadedmetadata',upd);
+addEventListener('scroll',function(){prime();if(!tk)tk=requestAnimationFrame(function(){tk=0;upd()})},{passive:true});
+addEventListener('touchstart',prime,{passive:true,once:true});addEventListener('resize',upd)})();
