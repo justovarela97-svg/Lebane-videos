@@ -190,8 +190,7 @@ function render(t,a){
   quad(C.map(function(c){return [c[0],c[1],zt]}),rgba(K.roofT,.97*wf));
   // logo Lebane pintado en el techo (plano del techo = transformacion afin)
   if(wf>.05){var O=P(0,0,zt),ex=P(1,0,zt),ey=P(0,1,zt);g.save();g.setTransform(DPR*(ex.x-O.x)/100,DPR*(ex.y-O.y)/100,DPR*(ey.x-O.x)/100,DPR*(ey.y-O.y)/100,DPR*O.x,DPR*O.y);
-   g.globalAlpha=wf;g.fillStyle='#296BFE';var ox=-150,oy=-34;g.fillRect(ox,oy,14,68);g.fillRect(ox+22,oy,46,14);g.fillRect(ox+22,oy+27,34,14);g.fillRect(ox+22,oy+54,46,14);
-   g.font='800 70px "Plus Jakarta Sans",system-ui,sans-serif';g.textBaseline='middle';g.fillText('Lebane',ox+84,2);g.restore()}
+   g.globalAlpha=wf;g.fillStyle='#296BFE';g.translate(-105,-105);g.scale(210/98,210/98);g.fill(new Path2D('M25.786 72.2105V0H0V98L97.9869 98V72.2105H25.786Z M98 0H36.1135V25.7895H98V0Z M98 36.1058H36.1135V61.8952H98V36.1058Z'));g.restore()}
   for(var k2=0;k2<4;k2++){var ff=cl(rf*4-k2),p1=C[k2],p2=C[(k2+1)%4];seg([p1[0],p1[1],zt],[p2[0],p2[1],zt],ff,K.roofE,.9,lw*1.2);seg([p1[0],p1[1],zr],[p2[0],p2[1],zr],ff,K.roofE,.7,lw)}}
  var sw=(t-9.3)/1.1;
  if(sw>0&&sw<1){var top=P(0,0,NF*FH+.5),bot=P(0,0,0),xc=L.cx-L.s*4+L.s*8*ease(sw),gr=g.createLinearGradient(xc-L.s*1.2,top.y,xc+L.s*1.2,bot.y);
