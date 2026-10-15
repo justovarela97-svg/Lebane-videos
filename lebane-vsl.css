@@ -57,3 +57,10 @@ html.dk .hd-ctas{flex-direction:column;gap:14px}
 .ld-cta .ld-cta-btn:hover{transform:translateY(-1px)}}
 #card .hs-form-html:has(.hsfc-Renderer){min-height:0}
 #card .hs-form-html .hsfc-Step__Content{padding-bottom:0!important}
+/* hero mas compacto: el video entra en la primera pantalla */
+@media (width>880px){html.dk .hd-in{min-height:0;padding-top:52px;padding-bottom:30px}
+html.dk .hd-eyebrow{margin-bottom:12px}
+html.dk .hd h1{margin-bottom:14px}
+html.dk .hd-sub{margin-bottom:24px}
+html.dk .hd-ctas{gap:10px}
+html.dk .hero{padding-top:0}}
