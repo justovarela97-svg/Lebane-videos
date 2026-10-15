@@ -55,3 +55,5 @@ html.dk .hd-ctas{flex-direction:column;gap:14px}
 .ld-cta small a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .ld-cta .ld-cta-btn{flex:none;background:#fff;color:#1a47c9;border-radius:12px;padding:12px 18px;font-weight:800;font-size:15px;text-decoration:none;white-space:nowrap;transition:transform .15s}
 .ld-cta .ld-cta-btn:hover{transform:translateY(-1px)}}
+#card .hs-form-html:has(.hsfc-Renderer){min-height:0}
+#card .hs-form-html .hsfc-Step__Content{padding-bottom:0!important}
