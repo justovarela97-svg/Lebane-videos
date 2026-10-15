@@ -69,3 +69,6 @@ html.dk .hd-eyebrow{display:inline-flex;align-items:center;gap:9px;text-transfor
 html.dk .hd-eyebrow b{color:#fff;font-weight:800}
 .hd-dot{width:7px;height:7px;border-radius:50%;background:#4f86ff;box-shadow:0 0 0 4px #4f86ff33;flex:none}
 @media (width<=880px){html.dk .hd-eyebrow{font-size:13px;padding:7px 13px;line-height:1.35;text-align:left}}
+html.dk .hd-sub b{color:#fff;font-weight:700}
+html.dk .hd-sub{max-width:620px;margin-left:auto;margin-right:auto}
+html.dk .hd-sub{text-wrap:balance}
