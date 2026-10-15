@@ -153,3 +153,8 @@ html.dk.lt .vsl{border:8px solid #fff;border-radius:26px;box-shadow:0 0 0 1px #d
 /* telefono en plateado */
 html.dk.lt .phone{background:linear-gradient(145deg,#f7f9fc,#d9dfea);box-shadow:0 30px 60px #0e172633,inset 0 0 0 1px #c5cedd}
 html.dk.lt .notch{background:#0e1726}
+/* tema claro con edificio */
+html.dk.lt .bgv{background:#edf1f8}
+html.dk.lt .bgv:after{background:linear-gradient(90deg,#f1f4fa 0%,#f1f4fa 26%,#f1f4fa00 56%)}
+@media (width<=880px){html.dk.lt .bgv:after{background:linear-gradient(180deg,#f3f6fbe6 0%,#f3f6fbc4 40%,#f3f6fb4d 72%,#f3f6fb26 100%)}}
+html.dk.lt .prog{display:none}
