@@ -116,7 +116,7 @@ if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSu
 });
 })();
 (function(){var mob=matchMedia('(max-width: 880px)').matches,red=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var d=document.createElement('div');d.className='bgv';d.setAttribute('aria-hidden','true');document.body.insertBefore(d,document.body.firstChild);document.documentElement.classList.add('dk');if(/[?&]bg=clean/.test(location.search)){d.className='bgv bgv-clean';d.innerHTML='<i class=bgv-floor></i>';return}var cv=document.createElement('canvas');d.appendChild(cv);
+var d=document.createElement('div');d.className='bgv';d.setAttribute('aria-hidden','true');document.body.insertBefore(d,document.body.firstChild);document.documentElement.classList.add('dk');if(/[?&]bg=clean/.test(location.search)){d.className='bgv bgv-clean';d.innerHTML='<i class="bgv-blob b1"></i><i class="bgv-blob b2"></i><i class="bgv-blob b3"></i><i class=bgv-floor></i><i class=bgv-beam></i>';return}var cv=document.createElement('canvas');d.appendChild(cv);
 var g=cv.getContext('2d');if(!g)return;
 var W=0,H=0,DPR=1,L,A=0,SC=1,lw=1,GLOW=!mob;
 var BLUE=[18,91,255],LIGHT=[120,160,255],WHITE=[245,247,255],BX=2,BY=1.5,FH=.62,NF=11,EL=.52,T=12;
