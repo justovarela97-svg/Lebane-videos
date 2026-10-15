@@ -74,6 +74,7 @@ card && new IntersectionObserver(function (en) { cardIn = en[0].isIntersecting; 
 document.addEventListener('click', function (e) {
 var a = e.target.closest('[data-cta]'); if (a) track('VSL_CTA_Click', { cta: a.dataset.cta });
 });
+(function(){var c=document.querySelector('.hd-ctas');if(c&&!c.querySelector('.hd-trial')){var t=document.createElement('a');t.className='hd-trial';t.href='#probar';t.setAttribute('data-trial','');t.setAttribute('data-cta','trial-hero');t.textContent='Probar gratis →';c.appendChild(t)}})();
 var tf = document.getElementById('trialForm');
 var dlg = document.getElementById('trialDlg');
 document.addEventListener('click', function (e) { var a = e.target.closest('[data-trial]'); if (!a || !dlg) return; e.preventDefault(); if (dlg.showModal) { dlg.showModal(); setTimeout(function () { tf && tf.elements.p.focus(); }, 50); } else { window.open('https://lebane-ar-prueba.vercel.app/', '_blank'); } });
@@ -97,14 +98,6 @@ if (reduce) { document.querySelector('.lena-demo').style.setProperty('--dur', '0
 ldShow(0);
 if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { ldVis = en[0].isIntersecting; if (ldVis) ldShow(ldI); else clearTimeout(ldT); }, { threshold: .4 }).observe(document.querySelector('.lena-demo'));
 }
-var dlg = document.getElementById('trialDlg');
-document.addEventListener('click', function (e) { var a = e.target.closest('[data-trial]'); if (!a || !dlg) return; e.preventDefault(); if (dlg.showModal) { dlg.showModal(); setTimeout(function () { tf && tf.elements.p.focus(); }, 50); } else { window.open('https://lebane-ar-prueba.vercel.app/', '_blank'); } });
-dlg && dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
-tf && tf.addEventListener('submit', function () { setTimeout(function () { dlg && dlg.open && dlg.close(); tf.reset(); }, 300);
-var email = (tf.elements.p.value || '').trim();
-track('Trial_Start', { vsl_watched: !!sent[50] });
-try { (window._hsq = window._hsq || []).push(['identify', { email: email }]); window._hsq.push(['trackPageView']); } catch (e) {}
-});
 if (desk && !reduce && 'IntersectionObserver' in window) {
 var fc = document.querySelectorAll('.feat-card');
 var fio = new IntersectionObserver(function (en) {
