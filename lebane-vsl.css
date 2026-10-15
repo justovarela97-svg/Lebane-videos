@@ -83,3 +83,6 @@ html.dk .hd-sub{text-wrap:balance}
 #card .hs-form-html .hsfc-CheckboxFieldGroup__Options label:has(input:checked){border-color:var(--blue);background:var(--blue-soft)}
 #card .hs-form-html .hsfc-CheckboxInput{width:17px!important;height:17px!important;margin:0!important;flex:none;accent-color:var(--blue)}
 @media (width<=380px){#card .hs-form-html .hsfc-CheckboxFieldGroup__Options{grid-template-columns:1fr}}
+#card .hs-form-html .hsfc-CheckboxFieldGroup__Options>div{display:flex}
+#card .hs-form-html .hsfc-CheckboxFieldGroup__Options label{flex:1;font-size:13.5px!important;min-height:44px}
+#card .hs-form-html .hsfc-CheckboxFieldGroup{margin-bottom:0!important}
