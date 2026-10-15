@@ -120,7 +120,7 @@ if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSu
 var d=document.createElement('div');d.className='bgv';d.setAttribute('aria-hidden','true');var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='auto';v.poster=B+(red?'-fin.jpg':'-ini.jpg');d.appendChild(v);document.body.insertBefore(d,document.body.firstChild);document.documentElement.classList.add('dk');
 if(red)return;v.src=B+'.mp4';
 var goal=mob?document.getElementById('card'):(document.querySelector('.form-zone')||document.getElementById('card')),tk,last=-1,primed=false;
-function upd(){if(!v.duration)return;var end=(goal?goal.getBoundingClientRect().top+scrollY:document.body.scrollHeight)-innerHeight*.5;var p=Math.min(1,Math.max(0,scrollY/Math.max(1,end)));var t=p*(v.duration-.05);if(Math.abs(t-last)>.03){last=t;try{v.currentTime=t}catch(e){}}}
+function upd(){if(!v.duration)return;var end=Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)-innerHeight;var p=Math.min(1,Math.max(0,scrollY/Math.max(1,end)));var t=p*(v.duration-.05);if(Math.abs(t-last)>.03){last=t;try{v.currentTime=t}catch(e){}}}
 function prime(){if(primed)return;primed=true;var p=v.play();if(p&&p.then)p.then(function(){v.pause();upd()}).catch(function(){});else v.pause()}
 v.addEventListener('loadedmetadata',upd);
 addEventListener('scroll',function(){prime();if(!tk)tk=requestAnimationFrame(function(){tk=0;upd()})},{passive:true});
