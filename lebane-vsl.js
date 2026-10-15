@@ -117,7 +117,7 @@ if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSu
 })();
 (function(){var mob=matchMedia('(max-width: 880px)').matches,red=matchMedia('(prefers-reduced-motion: reduce)').matches,qs=location.search,root=document.documentElement;
 // tema: ?bg=light|dark fuerza; utm_source=google -> oscuro; si no, celular claro / compu oscuro
-var theme=/[?&]bg=light/.test(qs)?'light':/[?&]bg=dark/.test(qs)?'dark':/[?&]utm_source=google/i.test(qs)?'dark':(mob?'light':'dark');
+var theme=/[?&]bg=light/.test(qs)?'light':'dark';
 var LT=theme==='light';
 var d=document.createElement('div');d.className='bgv';d.setAttribute('aria-hidden','true');document.body.insertBefore(d,document.body.firstChild);root.classList.add('dk');if(LT)root.classList.add('lt');
 if(/[?&]bg=clean/.test(qs)){d.className='bgv bgv-clean';d.innerHTML='<i class="bgv-blob b1"></i><i class="bgv-blob b2"></i><i class="bgv-blob b3"></i><i class=bgv-floor></i><i class=bgv-beam></i>';return}
@@ -125,8 +125,8 @@ var cv=document.createElement('canvas');d.appendChild(cv);
 var g=cv.getContext('2d');if(!g)return;
 var W=0,H=0,DPR=1,L,A=0,SC=1,lw=1,GLOW=!mob&&!LT;
 var BLUE=LT?[41,107,254]:[18,91,255],LIGHT=LT?[41,107,254]:[120,160,255],WHITE=LT?[79,134,255]:[245,247,255],FLASH=LT?[30,84,224]:[245,247,255],BX=2,BY=1.5,FH=.62,NF=11,EL=.52,T=12;
-var K=LT?{bg0:'#f5f7fc',bg1:'#e9eef7',glow:'rgba(41,107,254,0.10)',grid:.24,line:1.15,glass:'rgba(228,236,252,',gA:'rgba(41,107,254,',gB:'rgba(120,165,255,',roofT:[255,255,255],roofS:[200,212,236],roofE:[41,107,254],part:.25,sweep:'rgba(255,255,255,'}
- :{bg0:'#161922',bg1:'#161922',glow:'rgba(18,91,255,0.16)',grid:.30,line:1,glass:'rgba(20,28,56,',gA:'rgba(18,91,255,',gB:'rgba(120,170,255,',roofT:[248,250,255],roofS:[245,247,255],roofE:[245,247,255],part:.35,sweep:'rgba(170,200,255,'};
+var K=LT?{bg0:'#f5f7fc',bg1:'#e9eef7',glow:'rgba(41,107,254,0.10)',grid:.24,line:1.15,glass:'rgba(228,236,252,',gA:'rgba(41,107,254,',gB:'rgba(120,165,255,',roofT:[255,255,255],roofS:[200,212,236],roofE:[41,107,254],slabT:[236,241,251],slabS:[204,214,236],core:[214,223,242],sh:'rgba(30,60,140,',part:.25,sweep:'rgba(255,255,255,'}
+ :{bg0:'#161922',bg1:'#161922',glow:'rgba(18,91,255,0.16)',grid:.30,line:1,glass:'rgba(20,28,56,',gA:'rgba(18,91,255,',gB:'rgba(120,170,255,',roofT:[248,250,255],roofS:[245,247,255],roofE:[245,247,255],slabT:[64,80,124],slabS:[46,58,96],core:[54,68,108],sh:'rgba(0,0,0,',part:.35,sweep:'rgba(170,200,255,'};
 function cl(x){return x<0?0:x>1?1:x}
 function ease(x){x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}
 function rgba(c,a){return 'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')'}
@@ -150,6 +150,7 @@ function render(t,a){
  au.forEach(function(o){var R=Math.max(W,H)*o[4],r=g.createRadialGradient(o[0]*W,o[1]*H,0,o[0]*W,o[1]*H,R);r.addColorStop(0,rgba(o[2],o[3]*am));r.addColorStop(1,rgba(o[2],0));g.fillStyle=r;g.fillRect(0,0,W,H)});
  for(var i=-9;i<=9;i++){var fa=K.grid*(1-Math.abs(i)/10);for(var j=-9;j<9;j++){var al=fa*(1-(Math.abs(j)+.5)/9);seg([i,j,0],[i,j+1,0],1,LIGHT,al,1.3);seg([j,i,0],[j+1,i,0],1,LIGHT,al,1.3)}}
  rect(0,ease((t-.2)/.8),LIGHT,.9,lw*1.4);
+ var bh=cl((t-1.6)/(NF*.5));if(bh>0){var sx=1.4+bh*1.6,sy=.9+bh*1.1;quad([[-BX,-BY,0],[BX,-BY,0],[BX+sx,-BY+sy,0],[BX+sx,BY+sy,0],[-BX+sx,BY+sy,0],[-BX,BY,0]],K.sh+(.28*bh)+')')}
  var cg=ease((t-.6)/1.1),MX=BX+1.1,MY=-BY-.6,MH=NF*FH+2.4,mh=MH*cg,mw=.22;
  if(cg>0){seg([MX-mw,MY,0],[MX-mw,MY,MH],cg,LIGHT,.75,lw);seg([MX+mw,MY,0],[MX+mw,MY,MH],cg,LIGHT,.75,lw);
   for(var z=0;z<mh-.4;z+=.4){seg([MX-mw,MY,z],[MX+mw,MY,z+.4],1,BLUE,.55,lw*.6);seg([MX+mw,MY,z+.4],[MX-mw,MY,z+.4],1,BLUE,.35,lw*.5)}
@@ -166,9 +167,13 @@ function render(t,a){
    var tip=J(JL,MH+.05),tp=P(tip[0],tip[1],tip[2]),bl=.5+.5*Math.sin(a*3.2);g.fillStyle='rgba(255,90,90,'+(.35+.55*bl)*jf+')';g.beginPath();g.arc(tp.x,tp.y,2.2*SC*L.s/60,0,7);g.fill()}}
  var yb=P(0,0,0).y,yt=P(0,0,NF*FH).y,faces=[[[-BX,BY],[BX,BY],[0,1]],[[BX,-BY],[BX,BY],[1,0]],[[-BX,-BY],[BX,-BY],[0,-1]],[[-BX,-BY],[-BX,BY],[-1,0]]];
  for(var f=1;f<=NF;f++){var s=1.6+(f-1)*.5,cf=ease((t-s)/.3),sf=ease((t-s-.22)/.3),z0=(f-1)*FH,z1=f*FH;
-  if(cf>0)for(var ci=0;ci<=4;ci++)for(var cj=0;cj<=3;cj++){var x=-BX+ci,y=-BY+cj,edge=(ci===0||ci===4||cj===0||cj===3);seg([x,y,z0],[x,y,z1],cf,edge?LIGHT:BLUE,edge?.75:.35,lw*(edge?1:.7))}
-  if(sf>0){var fd=t-s-.52,flash=fd>0?Math.exp(-fd*5):0;rect(z1,sf,flash>.02?FLASH:LIGHT,.85,lw*(1.2+flash*1.2));if(flash>.02)rect(z1,1,FLASH,flash*.9,lw*3);
-   for(var ii=1;ii<4;ii++)seg([-BX+ii,-BY,z1],[-BX+ii,BY,z1],sf,BLUE,.18,lw*.5);for(var jj=1;jj<3;jj++)seg([-BX,-BY+jj,z1],[BX,-BY+jj,z1],sf,BLUE,.18,lw*.5)}
+  if(cf>0){var cz=z0+(z1-z0)*cf,CR=[[-.55,-.45],[.55,-.45],[.55,.45],[-.55,.45]];for(var ce=0;ce<4;ce++){var ca=CR[ce],cb=CR[(ce+1)%4],cr2=face(ca,cb);if(cr2<=0)continue;var cs=.55+.45*cr2;quad([[ca[0],ca[1],z0],[cb[0],cb[1],z0],[cb[0],cb[1],cz],[ca[0],ca[1],cz]],rgba([Math.round(K.core[0]*cs),Math.round(K.core[1]*cs),Math.round(K.core[2]*cs)],.95))}
+   for(var ci=0;ci<=4;ci++)for(var cj=0;cj<=3;cj++){var x=-BX+ci,y=-BY+cj,edge=(ci===0||ci===4||cj===0||cj===3);seg([x,y,z0],[x,y,z1],cf,edge?LIGHT:BLUE,edge?.8:.45,lw*(edge?1.5:1))}}
+  if(sf>0){var fd=t-s-.52,flash=fd>0?Math.exp(-fd*5):0,th=.15,zs=z1-th;
+   for(var se=0;se<4;se++){var sa=CO[se],sb=CO[(se+1)%4],sr=face(sa,sb);if(sr<=0)continue;var ss=.6+.4*sr;quad([[sa[0],sa[1],zs],[sb[0],sb[1],zs],[sb[0],sb[1],z1],[sa[0],sa[1],z1]],rgba([Math.round(K.slabS[0]*ss),Math.round(K.slabS[1]*ss),Math.round(K.slabS[2]*ss)],.97*sf))}
+   quad(CO.map(function(c){return [c[0],c[1],z1]}),rgba(K.slabT,.97*sf));
+   rect(z1,sf,flash>.02?FLASH:LIGHT,.85,lw*(1.2+flash*1.2));if(flash>.02)rect(z1,1,FLASH,flash*.9,lw*3);rect(zs,sf,LIGHT,.35,lw*.7);
+   for(var ii=1;ii<4;ii++)seg([-BX+ii,-BY,z1],[-BX+ii,BY,z1],sf,BLUE,.14,lw*.5);for(var jj=1;jj<3;jj++)seg([-BX,-BY+jj,z1],[BX,-BY+jj,z1],sf,BLUE,.14,lw*.5)}
   var gf=ease((t-8-(f-1)*.12)/.35);
   if(gf>0)faces.forEach(function(F,fi){var a2=F[0],b=F[1],n=F[2],ry=n[0]*Math.sin(A)+n[1]*Math.cos(A);if(ry<=0)return;
    var Q=[[a2[0],a2[1],z0],[b[0],b[1],z0],[b[0],b[1],z1],[a2[0],a2[1],z1]];quad(Q,K.glass+(.82*gf)+')');
