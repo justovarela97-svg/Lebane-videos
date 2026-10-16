@@ -156,10 +156,13 @@ function render(t,a){
  rect(0,ease((t-.2)/.8),LIGHT,.9,lw*1.4);
  var bh=cl((t-1.6)/(NF*.5));if(bh>0){var sx=1.4+bh*1.6,sy=.9+bh*1.1;quad([[-BX,-BY,0],[BX,-BY,0],[BX+sx,-BY+sy,0],[BX+sx,BY+sy,0],[-BX+sx,BY+sy,0],[-BX,BY,0]],K.sh+(.28*bh)+')')}
  // pasto organico con textura (al final)
- var gz=ease((t-9.0)/.9);if(gz>0){var NP=34,GP=[];for(var gi=0;gi<NP;gi++){var an=gi/NP*Math.PI*2,nr=.78+.22*Math.sin(an*3+1.3)+.14*Math.sin(an*7+.4)+.1*(rnd(gi+400)-.5);GP.push([Math.cos(an)*(BX+.6+2.4*gz)*nr,Math.sin(an)*(BY+.6+2.2*gz)*nr,.01])}
+ var gz=ease((t-9.0)/.9);if(gz>0){var NP=34,GP=[];for(var gi=0;gi<NP;gi++){var an=gi/NP*Math.PI*2,nr=.78+.22*Math.sin(an*3+1.3)+.14*Math.sin(an*7+.4)+.1*(rnd(gi+400)-.5);GP.push([Math.cos(an)*(BX+.6+3.4*gz)*nr,Math.sin(an)*(BY+.6+3.1*gz)*nr,.01])}
   quad(GP.map(function(p){return [p[0]*1.06,p[1]*1.06,.01]}),LT?'rgba(110,180,120,'+(.25*gz)+')':'rgba(44,112,74,'+(.3*gz)+')');quad(GP,LT?'rgba(110,180,120,'+(.5*gz)+')':'rgba(44,112,74,'+(.62*gz)+')');
-  for(var tf=0;tf<300;tf++){var ra=rnd(tf+700)*Math.PI*2,rr2=Math.sqrt(rnd(tf+900))*.92,ex=Math.cos(ra)*(BX+.6+2.4*gz)*rr2*(.78+.22*Math.sin(ra*3+1.3)),ey=Math.sin(ra)*(BY+.6+2.2*gz)*rr2*(.78+.22*Math.sin(ra*3+1.3));if(Math.abs(ex)<BX+.1&&Math.abs(ey)<BY+.1)continue;
-   var tp2=P(ex,ey,0),sh2=rnd(tf+50),gcol=sh2<.3?[86,170,108]:sh2<.6?[120,196,124]:sh2<.85?[60,140,90]:[150,210,130];g.fillStyle=rgba(LT?[gcol[0]+30,gcol[1]+30,gcol[2]+20]:gcol,(.35+.4*rnd(tf+60))*gz);g.beginPath();g.ellipse(tp2.x,tp2.y,(2+3.4*rnd(tf+70))*SC*L.s/60,(1.2+1.8*rnd(tf+80))*SC*L.s/60,0,0,7);g.fill()}}
+  // pelitos de pasto: trazos cortos y curvos
+  var GXR=(BX+.6+3.4*gz),GYR=(BY+.6+3.1*gz),u0=SC*L.s/60;g.lineCap='round';
+  for(var tf=0;tf<1150;tf++){var ra=rnd(tf+700)*Math.PI*2,rr2=Math.sqrt(rnd(tf+900))*.95,sh3=(.78+.22*Math.sin(ra*3+1.3)),ex=Math.cos(ra)*GXR*rr2*sh3,ey=Math.sin(ra)*GYR*rr2*sh3;if(Math.abs(ex)<BX+.05&&Math.abs(ey)<BY+.05)continue;
+   var bp2=P(ex,ey,0),hl=(3+5*rnd(tf+70))*u0*gz,lean=(rnd(tf+80)-.5)*.9,sw2=.15*Math.sin(a*1.4+tf),sh2=rnd(tf+50),gcol=LT?(sh2<.5?[90,170,90]:[140,200,100]):(sh2<.4?[110,200,110]:sh2<.8?[150,220,110]:[80,170,100]);
+   g.strokeStyle=rgba(gcol,(.45+.45*rnd(tf+60))*gz);g.lineWidth=Math.max(.8,1.1*u0);g.beginPath();g.moveTo(bp2.x,bp2.y);g.quadraticCurveTo(bp2.x+(lean+sw2)*hl*.4,bp2.y-hl*.6,bp2.x+(lean+sw2)*hl,bp2.y-hl);g.stroke()}}
  // grua: aparece al principio y se va cuando el edificio esta listo
  var out=ease((t-8.6)/1.1),cg=ease((t-.6)/1.1)*(1-out*.0),MX=BX+1.1+out*7,MY=-BY-.6,MH=NF*FH+2.4,mh=MH*cg,mw=.22;
  if(cg>0&&out<1){g.save();g.globalAlpha=1-out;seg([MX-mw,MY,0],[MX-mw,MY,MH],cg,LIGHT,.75,lw);seg([MX+mw,MY,0],[MX+mw,MY,MH],cg,LIGHT,.75,lw);
