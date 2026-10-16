@@ -90,13 +90,14 @@ function fill(t,arr){t.innerHTML='';for(var r=0;r<2;r++)arr.forEach(function(x){
 fill(tr,R[0]);w.classList.add('lr1');var prev=w;
 [[R[1],'lr2'],[R[2],'lr3']].forEach(function(o){var nw=document.createElement('div');nw.className='logo-track-wrap '+o[1];var nt=document.createElement('div');nt.className='logo-track';fill(nt,o[0]);nw.appendChild(nt);prev.parentNode.insertBefore(nw,prev.nextSibling);prev=nw})})();
 var tf = document.getElementById('trialForm');
+if (tf) tf.setAttribute('data-hs-do-not-collect','true');
 var dlg = document.getElementById('trialDlg');
 document.addEventListener('click', function (e) { var a = e.target.closest('[data-trial]'); if (!a || !dlg) return; e.preventDefault(); if (dlg.showModal) { dlg.showModal(); setTimeout(function () { tf && tf.elements.p.focus(); }, 50); } else { window.open('https://lebane-ar-prueba.vercel.app/', '_blank'); } });
 dlg && dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
 tf && tf.addEventListener('submit', function () { setTimeout(function () { dlg && dlg.open && dlg.close(); tf.reset(); }, 300);
 var email = (tf.elements.p.value || '').trim();
 track('Trial_Start', { vsl_watched: !!sent[50] });
-try { (window._hsq = window._hsq || []).push(['identify', { email: email }]); window._hsq.push(['trackPageView']); } catch (e) {}
+try { var hc=(document.cookie.match(/(?:^|; )hubspotutk=([^;]*)/)||[])[1]; var ctx={pageUri:location.href,pageName:document.title}; if(hc)ctx.hutk=hc; if(email)fetch('https://api.hsforms.com/submissions/v3/integration/submit/48905135/499999fd-bfcc-423c-8e16-b1bad805a147',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:[{objectTypeId:'0-1',name:'email',value:email}],context:ctx})}).catch(function(){}); } catch (e) {}
 });
 var ldItems = document.querySelectorAll('.ld-item'), ldConvs = document.querySelectorAll('.wa-conv'), ldI = 0, ldT, ldVis = false;
 function ldShow(i) {
