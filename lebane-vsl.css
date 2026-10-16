@@ -158,3 +158,26 @@ html.dk.lt .bgv{background:#edf1f8}
 html.dk.lt .bgv:after{background:linear-gradient(90deg,#f1f4fa 0%,#f1f4fa 26%,#f1f4fa00 56%)}
 @media (width<=880px){html.dk.lt .bgv:after{background:linear-gradient(180deg,#f3f6fbe6 0%,#f3f6fbc4 40%,#f3f6fb4d 72%,#f3f6fb26 100%)}}
 html.dk.lt .prog{display:none}
+/* prensa: carrusel automatico */
+.press{position:relative;z-index:1;padding:56px 0 24px}
+.press-head{text-align:center;margin:0 auto 26px;padding:0 16px}
+.press-head h2{font-size:32px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-top:8px}
+html.dk .press-head h2{color:#fff}
+html.dk.lt .press-head h2{color:var(--ink)}
+.press-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%)}
+.press-track{display:flex;gap:18px;width:max-content;animation:pressRun 55s linear infinite;padding:6px 0 10px}
+.press-wrap:hover .press-track,.press-wrap:focus-within .press-track{animation-play-state:paused}
+@keyframes pressRun{to{transform:translateX(calc(-50% - 9px))}}
+.press-card{flex:none;width:280px;display:flex;flex-direction:column;gap:6px;text-decoration:none;background:#ffffff0d;border:1px solid #ffffff1a;border-radius:18px;padding:10px 10px 16px;transition:transform .2s,border-color .2s,background .2s}
+.press-card:hover{transform:translateY(-3px);border-color:#4f86ff80;background:#ffffff14}
+.press-card img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:12px;display:block;margin-bottom:6px;background:#eef2fb}
+.press-src{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7fa6ff;padding:0 6px}
+.press-card b{font-size:15.5px;line-height:1.35;color:#fff;font-weight:700;padding:0 6px}
+.press-go{font-size:13px;font-weight:600;color:#9aa6bc;padding:0 6px;margin-top:auto}
+html.dk.lt .press-card{background:#fff;border-color:#dde4f0;box-shadow:0 1px 2px #0e17260f,0 10px 28px #0e172614}
+html.dk.lt .press-card b{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.press-track{animation:none}.press-wrap{overflow-x:auto}}
+@media (width<=880px){.press{padding:40px 0 16px}.press-head h2{font-size:25px}.press-card{width:240px}.press-track{animation-duration:45s}}
+.press{grid-column:1/-1;width:100%;min-width:0}
+html.dk:not(.lt) .press-card{background:#1c2131e6;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html.dk:not(.lt) .press-card:hover{background:#222a3df2}
