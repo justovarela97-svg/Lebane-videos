@@ -199,3 +199,13 @@ html.dk:not(.lt) .vsl{box-shadow:0 0 0 1px #4f86ff66,0 0 0 6px #4f86ff14,0 30px 
 /* compu: boton de sonido centrado en el video (queda en la primera pantalla) */
 .vsl.is-wide .vsl-ov{align-items:center;padding-bottom:0;background:radial-gradient(60% 60% at 50% 50%,#0e172680 0%,#0e172626 100%)}
 .vsl.is-wide .vsl-pill{font-size:19px;padding:18px 30px}
+/* logos: +470 destacado y 3 filas */
+.mob-bridge .bridge-lead{display:flex;flex-direction:column;align-items:center;gap:4px;text-transform:none!important;letter-spacing:0!important}
+.mob-bridge .bridge-lead .n470{font-size:56px;line-height:1;font-weight:800;letter-spacing:-.04em;background:linear-gradient(90deg,#fff 0%,#9dbcff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mob-bridge .bridge-lead span{font-size:15px;font-weight:600;color:#9aa6bc;max-width:520px}
+html.dk.lt .mob-bridge .bridge-lead .n470{background:linear-gradient(90deg,#0e1726 0%,#296bfe 100%);-webkit-background-clip:text;background-clip:text}
+.mob-bridge .logo-track-wrap+.logo-track-wrap{margin-top:12px}
+.mob-bridge .lr2 .logo-track{animation-direction:reverse;animation-duration:32s}
+.mob-bridge .lr3 .logo-track{animation-duration:38s}
+.mob-bridge .lr1 .logo-track{animation-duration:26s}
+@media (width<=880px){.mob-bridge .bridge-lead .n470{font-size:44px}.mob-bridge .bridge-lead span{font-size:13.5px;padding:0 16px}}
