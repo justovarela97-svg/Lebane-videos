@@ -209,3 +209,4 @@ html.dk.lt .mob-bridge .bridge-lead .n470{background:linear-gradient(90deg,#0e17
 .mob-bridge .lr3 .logo-track{animation-duration:38s}
 .mob-bridge .lr1 .logo-track{animation-duration:26s}
 @media (width<=880px){.mob-bridge .bridge-lead .n470{font-size:44px}.mob-bridge .bridge-lead span{font-size:13.5px;padding:0 16px}}
+.logo-card img[src*="logo-bugliotti"],.logo-card img[src*="logo-dypsa"],.logo-card img[src*="logo-cdmx"],.logo-card img[src*="logo-arco"],.logo-card img[src*="logo-hit"]{max-height:50px}.mob-bridge .logo-card img[src*="logo-bugliotti"],.mob-bridge .logo-card img[src*="logo-dypsa"],.mob-bridge .logo-card img[src*="logo-cdmx"],.mob-bridge .logo-card img[src*="logo-arco"],.mob-bridge .logo-card img[src*="logo-hit"]{max-height:40px}
